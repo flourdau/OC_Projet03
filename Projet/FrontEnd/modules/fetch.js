@@ -1,11 +1,9 @@
 export async function allWorks()
 {
-    const response = await fetch('http://localhost:5678/api/works', {
-        headers: {
-            'Cross-Origin-Resource-Policy': 'cross-origin',
-            "Accept": "application/json"
-        }}
-    )
+    const request = new Request('http://192.168.1.31:5678/api/works');
+    const init = {headers: {"Accept": "application/json"}};
+
+    const response = await fetch(request, init)
 
     if (response.ok === true) {
         return response.json();

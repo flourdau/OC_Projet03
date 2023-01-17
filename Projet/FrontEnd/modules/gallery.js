@@ -1,27 +1,25 @@
-/* Function One Card */
 export function createCard(card) 
 {
     let figure = document.createElement("figure");
     let figcaption = document.createElement("figcaption");
+    const myImage = new Image(363, 484);
 
-    const myImage = new Image(100, 200);
+/* DEBUG VM */
+card.imageUrl = card.imageUrl.replace('localhost', '192.168.1.31');
+
     myImage.src = card.imageUrl;
+    myImage.crossOrigin = "Anonymous";
+
     figure.appendChild(myImage);
     figcaption.innerText = card.title;
     figure.appendChild(figcaption);
-    
+
     return figure;
 
 }
 
-/* Function allCard */
 export async function allCards(data) 
 {
-console.log(data);    
-const gallery = document.querySelector(".gallery");
-// gallery.appendChild(tabCards);
+    const gallery = document.querySelector(".gallery");
     data.forEach(element => gallery.appendChild(createCard(element)));
-
-console.log('youpi!');    
-    // return(tabCards);
 }
