@@ -5,10 +5,10 @@ export async function allWorks()
     myHeaders.append("Accept", "application/json");
     
     const myResponse = await fetch(myRequest, myHeaders)
-
     if (myResponse.ok === true) {
         const tabSet = new Set();
         tabSet.add(myResponse.json());
+console.log('setTab',tabSet);
         return tabSet;
     }
     throw new Error('Impossible de contacter le serveur...');
@@ -21,7 +21,7 @@ export async function allCategories()
     myHeaders.append("Accept", "application/json");
     
     const myResponse = await fetch(myRequest, myHeaders)
-
+    
     if (myResponse.ok === true) {
         return myResponse.json();
     }

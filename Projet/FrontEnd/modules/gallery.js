@@ -1,5 +1,6 @@
 export function createCard(card) 
 {
+    console.log('ENTER the World!!!!!');
     let figure = document.createElement("figure");
     figure.setAttribute('class', card.categoryId);
 
@@ -39,5 +40,5 @@ export async function allCards(tabSet)
 
         })
     }
-    return tabSet;
+    // return tabSet;
 }
