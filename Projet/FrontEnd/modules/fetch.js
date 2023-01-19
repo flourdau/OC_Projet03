@@ -1,12 +1,29 @@
 export async function allWorks()
 {
-    const request = new Request('http://192.168.1.31:5678/api/works');
-    const init = {headers: {"Accept": "application/json"}};
+    const myRequest = new Request('http://192.168.1.31:5678/api/works');
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    
+    const myResponse = await fetch(myRequest, myHeaders)
 
-    const response = await fetch(request, init)
+    if (myResponse.ok === true) {
+        const tabSet = new Set();
+        tabSet.add(myResponse.json());
+        return tabSet;
+    }
+    throw new Error('Impossible de contacter le serveur...');
+}
 
-    if (response.ok === true) {
-        return response.json();
+export async function allCategories()
+{
+    const myRequest = new Request('http://192.168.1.31:5678/api/categories');
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    
+    const myResponse = await fetch(myRequest, myHeaders)
+
+    if (myResponse.ok === true) {
+        return myResponse.json();
     }
     throw new Error('Impossible de contacter le serveur...');
 }

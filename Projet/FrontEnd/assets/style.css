@@ -186,3 +186,30 @@ footer nav ul {
 	margin: 2em
 }
 
+/* FLOURDAU ADD */
+/* FILTERS */
+#menuFilters {
+	display:flex;
+	justify-content:center;
+	margin:0 auto 50px auto;
+}
+
+#menuFilters button {
+	margin:0 10px 0 0;
+	padding:9px 10px;
+	min-width:100px;
+	font-family: 'Syne';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	color: #1D6154;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+}
+
+#menuFilters button:hover {
+	color:white;
+	background:#1D6154;
+}
