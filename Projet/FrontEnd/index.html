@@ -14,49 +14,35 @@
 	<link rel="stylesheet" href="./assets/style.css">
 
 	<script type="module">
-		/*
-			1 Reccup des works
-			2 Affichage des works
-			
-			1 Reccup des Catégories
-			2 Affichage du menu de catégories
-			3 Creation des events
-			4 Gestion du trie
-		*/
+/*
+	0 Define & Import
+	1 Reccup des works
+	2 Affichage des works
 
-		import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from './modules/fetch.js';
-		import { allCards as gallery } from './modules/gallery.js';
-		import { createMenu } from './modules/createFilters.js';
-		import { createEvents } from './modules/events.js';
+	3 Reccup des Catégories
+	4 Affichage du menu de catégories
+	5 Creation des events
+	6 Gestion du trie
+*/
 
-		// fetchAllWorks().then(tabSet => {
-		// 		gallery(tabSet).then(tabSet => {
-		// 			fetchAllCategories().then(categories => { 
-		// 				createMenu(categories),
-		// 				createEvents(tabSet)
-		// 			})
-		// 		});
-		// 	}
-		// )
+import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from './modules/fetch.js';
+import { allCards as gallery } from './modules/gallery.js';
+import { createMenu } from './modules/createFilters.js';
+import { createEvents } from './modules/events.js';
 
-		async function main() {
-			try {
-				let tabSet = await fetchAllWorks();
-				// console.log(tabSet);
-				await gallery(tabSet);
-				// console.log(tabSet);
-				let categories = await fetchAllCategories();
-				await createMenu(categories);
-				await createEvents(tabSet);
-				// console.log(categories);
-				// console.log(tabTMP);
-			}
-			catch(e) {
-				console.log('Error! :(')
-			}
-		}
-
-		main();
+async function main() {
+	try {
+		let tabSet = await fetchAllWorks();
+		await gallery(tabSet);
+		let categories = await fetchAllCategories();
+		await createMenu(categories);
+		await createEvents(tabSet);
+	}
+	catch(e) {
+		console.log('Error! :(')
+	}
+}
+main();
 
 </script>
 
