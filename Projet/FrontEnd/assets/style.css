@@ -292,6 +292,15 @@ footer nav ul {
 
 /* 
 FLOURDAU ADD
+NAV */
+nav a {
+	color: #000000;
+	text-decoration-line: none
+}
+nav a:visited {
+	color: #000000
+}
+/* 
 FILTERS */
 #menuFilters {
 	display: flex;
@@ -322,13 +331,6 @@ FILTERS */
 
 /*
 LOGIN */
-nav a {
-	text-decoration-line: none
-}
-nav a:visited {
-	color: #000000
-}
-
 #login {
 	margin: 182px auto 305px auto;
 	display: flex;
@@ -354,7 +356,7 @@ nav a:visited {
 	border:none
 }
 
-#login span {
+#login label {
 	margin: 0 0 7px 0;
 	color: #3D3D3D;
 	font-family: 'Work Sans';

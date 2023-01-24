@@ -1,6 +1,6 @@
 /* DEBUG VM */
 // const API_URL = 'localhost';
-const API_URL = '192.168.1.31';
+// const API_URL = '192.168.1.31';
 
 const portfolio = document.getElementById("portfolio");
 let gallery = portfolio.querySelector(".gallery");
@@ -30,7 +30,7 @@ export function createCard(card)
     const myImage = new Image(363, 484);
 
     /* DEBUG VM */
-    card.imageUrl = card.imageUrl.replace('localhost', API_URL);
+    // card.imageUrl = card.imageUrl.replace('localhost', API_URL);
 
     myImage.src = card.imageUrl;
     myImage.crossOrigin = "Anonymous";
