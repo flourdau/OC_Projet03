@@ -13,9 +13,15 @@
 	<link rel="stylesheet" href="./assets/style.css">
 
 	<script type="module">
-		import { myLogin } from './modules/login.js';
-		let user = await myLogin();
-		console.log(user);
+
+import { myLogin } from './modules/login.js';
+import { checkStorageLogin } from './modules/storage.js';
+
+let user = myLogin();
+console.log(user);
+
+checkStorageLogin();
+
 	</script>
 
 </head>
@@ -38,8 +44,8 @@
 		</div>
 		<form id="login">
 			<h2>Log in</h2>
-			<label for="emaili">E-mail:</label>
-			<input type="email" id="emaili" required autofocus>
+			<label for="email">E-mail:</label>
+			<input type="email" id="email" required autofocus>
 			<label for="password">Mot de passe:</label>
 			<input type="password" id="password" required>
 			<input type="submit" value="Se connecter">
@@ -50,7 +56,7 @@
 	<footer>
 		<nav>
 			<ul>
-				<li>Mentions Légales</li>
+				<li id="myLogout">Mentions Légales</li>
 			</ul>
 		</nav>
 	</footer>

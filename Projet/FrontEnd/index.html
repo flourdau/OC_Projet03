@@ -13,9 +13,11 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap">
 	<link rel="stylesheet" href="./assets/style.css">
 
-	<script type="module">
+    <!-- ICONS -->
+    <script src="https://kit.fontawesome.com/48b93f25ac.js" crossorigin="anonymous"></script>
+	<script type="module"  crossorigin="anonymous">
 /*
-	0 Define & Import
+	0 Define? & Import
 	1 Reccup des works
 	2 Affichage des works
 
@@ -32,6 +34,9 @@ import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from '
 import { allCards as gallery } from './modules/gallery.js';
 import { createMenu } from './modules/createFilters.js';
 import { createEvents } from './modules/events.js';
+import { checkStorage } from './modules/storage.js';
+import { myLogout } from './modules/login.js';
+
 
 async function main() {
 	try {
@@ -40,12 +45,15 @@ async function main() {
 		let categories = await fetchAllCategories();
 		await createMenu(categories);
 		await createEvents(tabSet);
+		checkStorage();
 	}
 	catch(e) {
 		console.log('Error! :(')
 	}
 }
+
 main();
+myLogout();
 
 </script>
 
@@ -106,7 +114,7 @@ main();
 	<footer>
 		<nav>
 			<ul>
-				<li>Mentions Légales</li>
+				<li id="myLogout">Mentions Légales</li>
 			</ul>
 		</nav>
 	</footer>

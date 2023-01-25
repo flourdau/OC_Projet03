@@ -6,7 +6,7 @@ export async function allWorks()
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     const myResponse = await fetch(myRequest, myHeaders);
-    console.log(myResponse);
+    
     if (myResponse.ok === true) {
         const tabSet = new Set();
         tabSet.add(myResponse.json());

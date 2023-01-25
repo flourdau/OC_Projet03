@@ -384,3 +384,51 @@ LOGIN */
 	text-decoration-line: underline;
 	color: #3D3D3D
 }
+
+.edition {
+	height: 59px;
+	/* width: 100%; */
+	color: #FFFFFF;
+	background: #000000;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.edition-btn {
+	padding: 11px 23px;
+	margin:0 0 0 21px;
+	background: #FFFFFF;
+	border-radius: 60px;
+}
+
+i {
+	margin: 0 9px 0 0;
+}
+
+.edition2 {
+	margin: 0 0 19px 0;
+}
+
+.edition3 {
+font-family: 'Work Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+
+color: #000000;	
+}
+
+#portfolio>h2 {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#portfolio>h2 i {
+	margin: 0 11px 0 31px
+}

@@ -12,7 +12,6 @@ function createBtn(categorie)
 export async function createMenu(categories)
 {
 
-    const portfolio = document.getElementById("portfolio");
     const menuFilters = document.getElementById("menuFilters");
     categories.forEach(categorie => menuFilters.appendChild(createBtn(categorie)))
 

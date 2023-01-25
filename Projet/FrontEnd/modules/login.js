@@ -1,7 +1,7 @@
 function fetchUser() {
 
     let user = {
-        email: document.getElementById('emaili').value,
+        email: document.getElementById('email').value,
         password: document.getElementById('password').value
     };
 
@@ -14,10 +14,10 @@ function fetchUser() {
             if (myResponse.ok) {
                 return myResponse.json()
             }
-                let errorText = document.querySelector("#message");
-                errorText.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
-                throw new Error("Erreur dans l’identifiant ou le mot de passe");
-            })
+            let message = document.querySelector("#message");
+            message.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
+            throw new Error(message.innerHTML);
+        })
         .then(myResponse => {
             if (myResponse.token) {
                 localStorage.setItem("token", myResponse.token);
@@ -25,10 +25,10 @@ function fetchUser() {
             }
         })
 
-console.log(user);
+    console.log(user);
 }
 
-export async function myLogin() {
+export  function myLogin() {
 
     const form = document.querySelector("#login");
 
@@ -36,5 +36,20 @@ export async function myLogin() {
         event.preventDefault();
         fetchUser()
     })
+
+}
+
+export function myLogout() {
+
+    let myStorage = localStorage;
+    const myLogoutBtn = document.querySelector("#myLogout");
+    
+    myLogoutBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (myStorage.token) {
+            delete myStorage.token;
+            document.location.href="./login.html";
+            console.log('LOGIN PARTY!!!!');
+    }})
 
 }
