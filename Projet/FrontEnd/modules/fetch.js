@@ -6,7 +6,7 @@ export async function allWorks()
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     const myResponse = await fetch(myRequest, myHeaders);
-    
+
     if (myResponse.ok === true) {
         const tabSet = new Set();
         tabSet.add(myResponse.json());
@@ -31,25 +31,31 @@ export async function allCategories()
     throw new Error('Impossible de contacter le serveur...');
 }
 
-export function myFetchLogin(user) {
+export function fetchUser() {
 
-    console.log("ENTER THE MATRIX 2!!!!!");
-    console.log("test", user);
-    console.log(user.password);
-    console.log(user.email);
+    let user = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value
+    };
 
-    // // const url = "http://192.168.1.31:5678/api/users/login";
-    const url = "http://localhost:5678/api/users/login";
-
-    const myRequest = new Request(url);
-    const myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-
-    fetch(myRequest, myHeaders).then(myResponse => {
-    if (myResponse.ok === true) {
-        return myResponse.json();
-    }
-    let message = document.querySelector('#message');
-    throw new Error('Impossible de contacter le serveur...');
-    })
+    fetch("http://localhost:5678/api/users/login", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json;charset=utf-8'},
+            body: JSON.stringify(user)
+        })
+        .then(myResponse => {
+            if (myResponse.ok) {
+                return myResponse.json()
+            }
+            let message = document.querySelector("#message");
+            message.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
+            throw new Error(message.innerHTML);
+        })
+        .then(myResponse => {
+            if (myResponse.token) {
+                sessionStorage.setItem("token", myResponse.token);
+                document.location.href="./index.html";
+            }
+        })
+        
 }

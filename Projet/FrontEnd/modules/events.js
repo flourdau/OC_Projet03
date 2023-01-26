@@ -1,7 +1,7 @@
 import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from './fetch.js';
 import { allCards as gallery, cleanGallery, createGallery, createCard } from './gallery.js';
 
-function myDisplayClass(className, tabSet) {
+function myDisplayCategories(className, tabSet) {
 
     let tabSetTMP = new Set();
     cleanGallery();
@@ -33,7 +33,7 @@ export function createEvents(tabSet) {
     myBtns.forEach(button => {
         button.addEventListener('click', {
             handleEvent: function (event) {
-                myDisplayClass(button.value, tabSet);
+                myDisplayCategories(button.value, tabSet);
     }})});
 
 }

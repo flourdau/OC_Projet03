@@ -10,12 +10,13 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap">
 	<link rel="stylesheet" href="./assets/style.css">
 
-    <!-- ICONS -->
-    <script src="https://kit.fontawesome.com/48b93f25ac.js" crossorigin="anonymous"></script>
-	<script type="module"  crossorigin="anonymous">
+	<!-- ICONS -->
+	<script src="https://kit.fontawesome.com/48b93f25ac.js" crossorigin="anonymous"></script>
+	<script type="module" crossorigin="anonymous">
 /*
 	0 Define? & Import
 	1 Reccup des works
@@ -23,10 +24,10 @@
 
 	3 Reccup des Catégories
 	4 Affichage du menu de catégories
-	5 Creation des events
+	5 Création des events
 	6 Gestion du trie
 
-	7 Creation login page
+	7 Création login page
 	8 Authentification System
 */
 
@@ -47,15 +48,17 @@ async function main() {
 		await createEvents(tabSet);
 		checkStorage();
 	}
-	catch(e) {
-		console.log('Error! :(')
+	catch (e) {
+		let message = 'Error! :(';
+		console.log(message);
+		throw new Error(message);
 	}
 }
 
 main();
 myLogout();
 
-</script>
+	</script>
 
 </head>
 

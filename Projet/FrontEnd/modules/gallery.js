@@ -29,8 +29,8 @@ export function createCard(card)
     let figcaption = document.createElement("figcaption");
     const myImage = new Image(363, 484);
 
-    /* DEBUG VM */
-    // card.imageUrl = card.imageUrl.replace('localhost', API_URL);
+/* DEBUG VM */
+// card.imageUrl = card.imageUrl.replace('localhost', API_URL);
 
     myImage.src = card.imageUrl;
     myImage.crossOrigin = "Anonymous";
