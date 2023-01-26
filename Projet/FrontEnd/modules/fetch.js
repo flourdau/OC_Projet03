@@ -31,31 +31,35 @@ export async function allCategories()
     throw new Error('Impossible de contacter le serveur...');
 }
 
-export function fetchUser() {
+export async function fetchUser() {
 
-    let user = {
+    const user = {
         email: document.getElementById('email').value,
         password: document.getElementById('password').value
     };
+    const myRequest = new Request("http://localhost:5678/api/users/login");
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json;charset=utf-8");
+    myHeaders.append("Content-Type", "application/json;charset=utf-8");
 
-    fetch("http://localhost:5678/api/users/login", {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json;charset=utf-8'},
-            body: JSON.stringify(user)
-        })
-        .then(myResponse => {
-            if (myResponse.ok) {
-                return myResponse.json()
-            }
-            let message = document.querySelector("#message");
-            message.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
-            throw new Error(message.innerHTML);
-        })
-        .then(myResponse => {
-            if (myResponse.token) {
-                sessionStorage.setItem("token", myResponse.token);
-                document.location.href="./index.html";
-            }
-        })
-        
+    let myResponse = await fetch(myRequest, {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(user)
+    });
+
+    if (myResponse.ok) {
+        const myJson = await myResponse.json();
+
+        if (myJson.token) {
+            sessionStorage.setItem("token", myJson.token);
+            document.location.href="./index.html";
+        }
+    }
+    else {
+        let message = document.querySelector("#message");
+        message.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
+        throw new Error(message.innerHTML);
+    }
+
 }

@@ -3,7 +3,6 @@ import { allCards as gallery, cleanGallery, createGallery, createCard } from './
 
 function myDisplayCategories(className, tabSet) {
 
-    let tabSetTMP = new Set();
     cleanGallery();
     let gallery = createGallery();
     for (let item of tabSet) {
@@ -26,13 +25,13 @@ export function createEvents(tabSet) {
 
     // all
     myBtnTous[0].addEventListener('click', {
-        handleEvent: function (event) {
+        handleEvent: function () {
             fetchAllWorks().then(works => gallery(works));
     }});
 
     myBtns.forEach(button => {
         button.addEventListener('click', {
-            handleEvent: function (event) {
+            handleEvent: function () {
                 myDisplayCategories(button.value, tabSet);
     }})});
 

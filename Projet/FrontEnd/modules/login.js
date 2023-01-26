@@ -1,12 +1,12 @@
 import { fetchUser } from './fetch.js';
 
-export function myLogin() {
+export async function myLogin() {
 
     const form = document.querySelector("#login");
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async function(event) {
         event.preventDefault();
-        fetchUser()
+        await fetchUser()
     })
 
 }
@@ -20,7 +20,6 @@ export function myLogout() {
         if (sessionStorage.getItem('token')) {
             sessionStorage.clear();
             document.location.href="./login.html";
-            console.log('Login!');
     }})
 
 }
