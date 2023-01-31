@@ -79,6 +79,7 @@ export function createMiniCard(card)
     
     icoDelete.setAttribute('class', 'fa-sharp fa-solid fa-trash-can');
     buttonDelete.appendChild(icoDelete);
+    buttonDelete.setAttribute('value', card.id);
 
     divUpBar.appendChild(buttonFleche);
     divUpBar.appendChild(buttonDelete);
@@ -106,7 +107,9 @@ export function allCards(tabSet)
             createMiniGallery();
             works.forEach(card => {
                     gallery.appendChild(createCard(card));
-                    miniGallery.appendChild(createMiniCard(card));
+                    if (sessionStorage.getItem('token')) {
+                        miniGallery.appendChild(createMiniCard(card));
+                    }
                 }
             );
 

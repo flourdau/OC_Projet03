@@ -16,12 +16,12 @@ export function checkStorage()
 
         let menuFilters = document.querySelector("#menuFilters");
         menuFilters.style.display ="none";
-        
+
         let div = document.createElement("div");
         let div2 = document.createElement("div");
         let div3 = document.createElement("div");
         let div4 = document.createElement("div");
-        
+
         let span = document.createElement("span");
         let span2 = document.createElement("span");
         let span4 = document.createElement("span");
@@ -34,7 +34,7 @@ export function checkStorage()
         let btn = document.createElement("button");
         btn.innerText = "Publier les chanchements";
         btn.setAttribute('class', 'edition-btn');
-        
+
         div.setAttribute('class', 'edition');
         div2.setAttribute('class', 'edition2');
         div3.setAttribute('class', 'edition3');
@@ -44,7 +44,8 @@ export function checkStorage()
         i2.setAttribute('class', 'fa-regular fa-pen-to-square');
         i3.setAttribute('class', 'fa-regular fa-pen-to-square');
         i4.setAttribute('class', 'fa-regular fa-pen-to-square');
-        
+
+
         let linkModal = document.createElement("a");;
         linkModal.setAttribute('href', '#modal1');
         linkModal.setAttribute('class', 'js-modal');

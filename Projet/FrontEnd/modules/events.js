@@ -20,7 +20,8 @@ function myDisplayCategories(className, tabSet)
 
 export function createEvents(tabSet)
 {
-
+    
+    const btnDelWork = document.querySelectorAll(".miniCard button");
     const portfolio = document.getElementById("portfolio");
     const myBtns = document.querySelectorAll(".filter-btn");
     const myBtnTous = document.getElementsByClassName("filter-btn-tous");
@@ -34,6 +35,12 @@ export function createEvents(tabSet)
         button.addEventListener('click', {
             handleEvent: function () {
                 myDisplayCategories(button.value, tabSet);
+    }})});
+
+    btnDelWork.forEach(button => {
+        button.addEventListener('click', {
+            handleEvent: function () {
+                console.log(button.value);
     }})});
 
 }
