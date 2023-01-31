@@ -1,36 +1,54 @@
-/* DEBUG VM */
-// const API_URL = 'localhost';
-// const API_URL = '192.168.1.31';
-
 const portfolio = document.getElementById("portfolio");
-let gallery = portfolio.querySelector(".gallery");
+const modal = document.querySelector(".modal-wrapper");
+export let gallery = portfolio.querySelector(".gallery");
+let miniGallery = portfolio.querySelector(".miniGallery");
 
-export function cleanGallery() {
+export function cleanGallery()
+{
 
     gallery.remove();
+    miniGallery.remove();
 
 }
 
-export function createGallery() {
+export function createGallery()
+{
 
     gallery = document.createElement("div");
     gallery.setAttribute('class', 'gallery');
     portfolio.appendChild(gallery);
-    return gallery;
 
 }
 
-export function createCard(card) 
+export function createMiniGallery()
+{
+
+    miniGallery = document.createElement("div");
+    let bottomBar = document.createElement("div");
+    let buttonAdd = document.createElement("button");
+    let buttonDel = document.createElement("button");
+    let myHr = document.createElement("hr");
+
+    bottomBar.setAttribute("id", "bottomBar");
+    buttonAdd.innerHTML = "Ajouter une photo";
+    buttonDel.innerHTML = "Supprimer la galerie";
+    bottomBar.appendChild(buttonAdd);
+    bottomBar.appendChild(buttonDel);
+
+    miniGallery.setAttribute('class', 'miniGallery');
+
+    modal.appendChild(miniGallery);
+    modal.appendChild(myHr);
+    modal.appendChild(bottomBar);
+
+}
+
+export function createCard(card)
 {
 
     let figure = document.createElement("figure");
-    figure.setAttribute('class', card.categoryId);
-
     let figcaption = document.createElement("figcaption");
     const myImage = new Image(363, 484);
-
-/* DEBUG VM */
-// card.imageUrl = card.imageUrl.replace('localhost', API_URL);
 
     myImage.src = card.imageUrl;
     myImage.crossOrigin = "Anonymous";
@@ -43,14 +61,55 @@ export function createCard(card)
 
 }
 
-export function allCards(tabSet) 
+export function createMiniCard(card)
+{
+
+    let figure = document.createElement("figure");
+    let figcaption = document.createElement("figcaption");
+    let divUpBar = document.createElement("div");
+    let buttonDelete = document.createElement("button");
+    let buttonFleche = document.createElement("button");
+    let icoDelete = document.createElement("i");
+    let icoFleche = document.createElement("i");
+    const myImage = new Image(78, 104);
+
+    figure.setAttribute('class', 'miniCard');
+    icoFleche.setAttribute('class', 'fa-solid fa-arrows-up-down-left-right');
+    buttonFleche.appendChild(icoFleche);
+    
+    icoDelete.setAttribute('class', 'fa-sharp fa-solid fa-trash-can');
+    buttonDelete.appendChild(icoDelete);
+
+    divUpBar.appendChild(buttonFleche);
+    divUpBar.appendChild(buttonDelete);
+    figure.appendChild(divUpBar);
+
+    myImage.src = card.imageUrl;
+    myImage.crossOrigin = "Anonymous";
+
+    figure.appendChild(myImage);
+    figcaption.innerText = "éditer";
+    figure.appendChild(figcaption);
+
+    return figure;
+
+}
+
+export function allCards(tabSet)
 {
 
     for (let item of tabSet) {
-        item.then(work => {
+        item.then(works => {
+            
             cleanGallery();
-            let gallery = createGallery();
-            work.forEach(card => gallery.appendChild(createCard(card)));
+            createGallery();
+            createMiniGallery();
+            works.forEach(card => {
+                    gallery.appendChild(createCard(card));
+                    miniGallery.appendChild(createMiniCard(card));
+                }
+            );
+
         })
     }
 

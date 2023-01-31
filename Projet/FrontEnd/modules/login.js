@@ -1,6 +1,7 @@
 import { fetchUser } from './fetch.js';
 
-export async function myLogin() {
+export async function myLogin()
+{
 
     const form = document.querySelector("#login");
 
@@ -11,7 +12,8 @@ export async function myLogin() {
 
 }
 
-export function myLogout() {
+export function myLogout()
+{
 
     const myLogoutBtn = document.querySelector("#myLogout");
     

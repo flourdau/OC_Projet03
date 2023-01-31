@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="description" content="">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,50 +15,58 @@
 
 	<!-- ICONS -->
 	<script src="https://kit.fontawesome.com/48b93f25ac.js" crossorigin="anonymous"></script>
-	<script type="module" crossorigin="anonymous">
-/*
-	0 Define? & Import
-	1 Reccup des works
-	2 Affichage des works
+	<script type="module">
 
-	3 Reccup des Catégories
-	4 Affichage du menu de catégories
-	5 Création des events
-	6 Gestion du trie
+		/*
+			0 Imports & Modules
+			1 Reccup des works
+			2 Affichage des works
+		
+			3 Reccup des Catégories
+			4 Affichage du menu de catégories
+			5 Création des events
+			6 Gestion du trie
+		
+			7 Création login page
+			8 Authentification System
+		
+			9 Modal Création
+			1 Reccup des works
+			2 Affichage des works
+		
+		
+		*/
 
-	7 Création login page
-	8 Authentification System
-*/
-
-import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from './modules/fetch.js';
-import { allCards as gallery } from './modules/gallery.js';
-import { createMenu } from './modules/createFilters.js';
-import { createEvents } from './modules/events.js';
-import { checkStorage } from './modules/storage.js';
-import { myLogout } from './modules/login.js';
+		import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from './modules/fetch.js';
+		import { allCards as gallery } from './modules/gallery.js';
+		import { createMenu } from './modules/createFilters.js';
+		import { createEvents } from './modules/events.js';
+		import { checkStorage } from './modules/storage.js';
+		import { myLogout } from './modules/login.js';
+		import { createEventModal1 } from './modules/modal.js';
 
 
-async function main() {
-	try {
-		let tabSet = await fetchAllWorks();
-		await gallery(tabSet);
-		let categories = await fetchAllCategories();
-		await createMenu(categories);
-		await createEvents(tabSet);
-		checkStorage();
-	}
-	catch (e) {
-		let message = 'Error! :(';
-		console.log(message);
-		throw new Error(message);
-	}
-}
+		async function main() {
+			try {
+				let tabSet = await fetchAllWorks();
+				await gallery(tabSet);
+				let categories = await fetchAllCategories();
+				await createMenu(categories);
+				await createEvents(tabSet);
+				checkStorage();
+				createEventModal1();
+				myLogout();
+			}
+			catch (e) {
+				let message = 'Error! :(';
+				console.log(message);
+				throw new Error(message);
+			}
+		}
 
-main();
-myLogout();
+		main();
 
 	</script>
-
 </head>
 
 <body>
@@ -69,7 +76,7 @@ myLogout();
 			<ul>
 				<li><a href="index.html">projets</a></li>
 				<li><a href="index.html#contact">contact</a></li>
-				<li><a href="login.html">login</a></li>
+				<li><a class="logInOut" href="login.html">login</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -91,6 +98,20 @@ myLogout();
 			</article>
 		</section>
 		<section id="portfolio">
+			<aside id="modal1" class="modal, myDisplayNone" aria-hidden="true" role="dialog" aria-modal="false"
+				aria-labelledby="titlemodal">
+				<div class="modal-wrapper">
+					<div id="upBar">
+						<button>
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+					</div>
+					<h2 id="titlemodal">Galerie photo</h2>
+					<div class="miniGallery">
+						<!-- Add By fetch JS -->
+					</div>
+				</div>
+			</aside>
 			<h2>Mes Projets</h2>
 			<div id="menuFilters">
 				<button class="filter-btn-tous">Tous</button>
@@ -113,11 +134,10 @@ myLogout();
 			</form>
 		</section>
 	</main>
-
 	<footer>
 		<nav>
 			<ul>
-				<li id="myLogout">Mentions Légales</li>
+				<li>Mentions Légales</li>
 			</ul>
 		</nav>
 	</footer>
