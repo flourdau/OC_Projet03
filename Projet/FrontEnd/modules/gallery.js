@@ -32,6 +32,7 @@ export function createMiniGallery()
     bottomBar.setAttribute("id", "bottomBar");
     buttonAdd.innerHTML = "Ajouter une photo";
     buttonDel.innerHTML = "Supprimer la galerie";
+    buttonAdd.focus();
     bottomBar.appendChild(buttonAdd);
     bottomBar.appendChild(buttonDel);
 

@@ -471,7 +471,7 @@ MODAL */
 	height: 731px;
 	padding: 20px 0;
 	max-width: calc(100vw- 20px);
-	max-height: calc(100vw- 20px);
+	max-height: calc(100vh- 20px);
 	background: #FFF
 }
 
@@ -594,4 +594,8 @@ MODAL */
 .miniCard figcaption {
 	width: 100%;
 	text-align: left
+}
+
+.js-close-modal span {
+	display:none;
 }
