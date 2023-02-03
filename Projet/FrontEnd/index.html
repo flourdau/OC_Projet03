@@ -15,7 +15,7 @@
 
 	<!-- ICONS -->
 	<script src="https://kit.fontawesome.com/48b93f25ac.js" crossorigin="anonymous"></script>
-	<script type="module">
+	<script type="module" defer>
 
 		/*
 			0 Imports & Modules
@@ -33,36 +33,12 @@
 			9 Modal Création
 			1 Reccup des works
 			2 Affichage des works
-		
+			10 Delete Work
+			11 Create Work
 		
 		*/
 
-		import { allWorks as fetchAllWorks, allCategories as fetchAllCategories } from './modules/fetch.js';
-		import { allCards as gallery } from './modules/gallery.js';
-		import { createMenu } from './modules/createFilters.js';
-		import { createEvents } from './modules/events.js';
-		import { checkStorage } from './modules/storage.js';
-		import { myLogout } from './modules/login.js';
-		import { createEventModal1 } from './modules/modal.js';
-
-
-		async function main() {
-			try {
-				let tabSet = await fetchAllWorks();
-				await gallery(tabSet);
-				let categories = await fetchAllCategories();
-				await createMenu(categories);
-				await createEvents(tabSet);
-				checkStorage();
-				createEventModal1();
-				myLogout();
-			}
-			catch (e) {
-				let message = 'Error! :(';
-				console.log(message);
-				throw new Error(message);
-			}
-		}
+		import { main } from './modules/init.js';
 
 		main();
 

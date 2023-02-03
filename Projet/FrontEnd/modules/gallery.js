@@ -1,6 +1,6 @@
 const portfolio = document.getElementById("portfolio");
-const modal = document.querySelector(".modal-wrapper");
 export let gallery = portfolio.querySelector(".gallery");
+const modal = document.querySelector(".modal-wrapper");
 let miniGallery = portfolio.querySelector(".miniGallery");
 
 export function cleanGallery()
@@ -29,10 +29,13 @@ export function createMiniGallery()
     let buttonDel = document.createElement("button");
     let myHr = document.createElement("hr");
 
+    buttonAdd.setAttribute("type", "button");
+    buttonDel.setAttribute("type", "button");
+
     bottomBar.setAttribute("id", "bottomBar");
     buttonAdd.innerHTML = "Ajouter une photo";
     buttonDel.innerHTML = "Supprimer la galerie";
-    buttonAdd.focus();
+    // buttonAdd.focus();
     bottomBar.appendChild(buttonAdd);
     bottomBar.appendChild(buttonDel);
 
@@ -75,12 +78,15 @@ export function createMiniCard(card)
     const myImage = new Image(78, 104);
 
     figure.setAttribute('class', 'miniCard');
+    buttonFleche.setAttribute('type', 'button');
     icoFleche.setAttribute('class', 'fa-solid fa-arrows-up-down-left-right');
     buttonFleche.appendChild(icoFleche);
     
     icoDelete.setAttribute('class', 'fa-sharp fa-solid fa-trash-can');
+    buttonDelete.setAttribute('type', 'button');
+    buttonDelete.setAttribute('class', 'btn-del-work');
     buttonDelete.appendChild(icoDelete);
-    buttonDelete.setAttribute('value', card.id);
+    buttonDelete.dataset.id = card.id;
 
     divUpBar.appendChild(buttonFleche);
     divUpBar.appendChild(buttonDelete);
@@ -97,7 +103,7 @@ export function createMiniCard(card)
 
 }
 
-export function allCards(tabSet)
+export function createGalleries(tabSet)
 {
 
     for (let item of tabSet) {

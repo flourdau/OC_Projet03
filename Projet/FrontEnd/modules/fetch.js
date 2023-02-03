@@ -1,12 +1,18 @@
-export async function allWorks()
+export async function fetchAllWorks()
 {
 
-    const myRequest = new Request('http://localhost:5678/api/works');
-    const myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    const myResponse = await fetch(myRequest, myHeaders);
+    const url = 'http://localhost:5678/api/works';
+    const myInit = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json"
+        }
+    };
 
+    const myResponse = await fetch(url, myInit);
     if (myResponse.ok === true) {
+        console.log("myResponse:", myResponse);
         const tabSet = new Set();
         tabSet.add(myResponse.json());
         return tabSet;
@@ -15,14 +21,19 @@ export async function allWorks()
 
 }
 
-export async function allCategories()
+export async function fetchAllCategories()
 {
 
-    const myRequest = new Request('http://localhost:5678/api/categories');
-    const myHeaders = new Headers();
+    const url = 'http://localhost:5678/api/categories';
+    const myInit = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json"
+        }
+    };
 
-    myHeaders.append("Accept", "application/json");
-    const myResponse = await fetch(myRequest, myHeaders)
+    const myResponse = await fetch(url, myInit)
     if (myResponse.ok === true) {
         return myResponse.json();
     }
@@ -62,4 +73,46 @@ export async function fetchUser()
         throw new Error(message.innerHTML);
     }
 
+}
+
+export async function deleteWork(id)
+{
+    console.log(id);
+    console.log(sessionStorage.getItem('token'));
+
+    const myInit = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json;charset=utf-8",
+            "Authorization": `Bearer ${sessionStorage.getItem('token')}`
+        }
+    };
+
+    console.log(myInit);
+    
+    const response = await fetch("http://localhost:5678/api/works/" + id, myInit);
+    console.log(response);
+    // const workDel = response.json();
+    // console.log("RETURN", workDel.status);
+
+    // if (workDel.status === 204) {
+    //     return workDel;
+    // }
+// ELSE ERROR !!!
+
+    // const response = await fetch("http://localhost:5678/api/works/" + id, {
+    //     method: 'DELETE',
+    //     headers: {
+    //         'Content-Type' : 'application/json',
+    //         'Authorization' : `Bearer ${sessionStorage.getItem('token')}`
+    //     },
+    // });
+
+    // const workDel = await response.json();
+    // console.log("RETURN", workDel.status);
+    // if (ret.status === 204) {
+                //     fetchAllWorks().then(works => gallery(works));
+                //     console.log("RETURN", ret);
+                // }
 }
