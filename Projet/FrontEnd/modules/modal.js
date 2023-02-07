@@ -1,4 +1,3 @@
-import { createEventsModal } from './events.js';
 let modal = null;
 // const focusableSelector = 'button, a, input, textarea';
 // let focusables = [];
@@ -26,14 +25,14 @@ let modal = null;
 // }
 
 const stopPropagation = function(e) {e.stopPropagation();}
-export const closeModal = function(e)
+export const closeModal = function(event)
 {
 
     if (modal === null) {
         return
     }
-    e.preventDefault();
-    modal.setAttribute('class', 'myDisplayNone');
+    event.preventDefault();
+    modal.style.display = 'none';
     modal.setAttribute('aria-hidden', true);
     modal.removeAttribute('aria-modal');
     modal.removeEventListener('click', closeModal);
@@ -43,26 +42,19 @@ export const closeModal = function(e)
 
 }
 
-export const openModal= function(e)
+export const openModal= function(event)
 {
 
-    e.preventDefault();
+    event.preventDefault();
     modal = document.querySelector("#modal1");
+    modal.style.display = 'flex';
     // focusables = Array.from(modal.querySelectorAll(focusableSelector));
     // focusables[0].focus();
     modal.setAttribute('class', 'modal');
     modal.removeAttribute('aria-hidden');
     modal.setAttribute('aria-modal', 'true');
-    // modal.setAttribute('aria-dialog', ':focus');
     modal.addEventListener('click', closeModal);
     modal.querySelector('.js-close-modal').addEventListener('click', closeModal);
     modal.querySelector('.js-stop-modal').addEventListener('click', stopPropagation);
-
-}
-
-export function initModal(tabSet)
-{
-
-    createEventsModal(tabSet);
 
 }

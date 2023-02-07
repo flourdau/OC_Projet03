@@ -9,13 +9,12 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap">
 	<link rel="stylesheet" href="./assets/style.css">
 
 	<!-- ICONS -->
 	<script src="https://kit.fontawesome.com/48b93f25ac.js" crossorigin="anonymous"></script>
-	<script type="module" defer>
+	<script type="module">
 
 		/*
 			0 Imports & Modules
@@ -74,20 +73,30 @@
 			</article>
 		</section>
 		<section id="portfolio">
-			<aside id="modal1" class="modal, myDisplayNone" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal">
+			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal">
 				<div class="modal-wrapper js-stop-modal">
 					<div id="upBar">
-						<button class="js-close-modal" autofocus>
+						<button class="js-return-modal">
+							<i class="fa-solid fa-arrow-left"></i>
+							<span>Retour</span>
+						</button>
+						<button class="js-close-modal">
 							<i class="fa-solid fa-xmark"></i>
 							<span>Fermer la boite modal</span>
 						</button>
 					</div>
-					<h2 id="titlemodal">Galerie photo</h2>
-					<div class="miniGallery">
-						<!-- Add By fetch JS -->
+					<div id="miniGallery">
+						<h2 id="titlemodal">Galerie photo</h2>
+						<div id="contenerGallery">
+							<!-- Add By fetch JS -->
+						</div>
+					</div>
+					<div id="myFormulaire">
+						<h2>Ajout photo</h2>
 					</div>
 				</div>
 			</aside> 
+
 			<h2>Mes Projets</h2>
 			<div id="menuFilters">
 				<button class="filter-btn-tous">Tous</button>

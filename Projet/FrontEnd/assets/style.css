@@ -291,7 +291,12 @@ footer nav ul {
 }
 
 /* 
-FLOURDAU ADD
+FLOURDAU ADD */
+* {
+	box-sizing: border-box
+}
+
+
 NAV */
 nav a {
 	color: #000000;
@@ -444,14 +449,6 @@ i {
 
 /*
 MODAL */
-* {
-	box-sizing: border-box
-}
-
-.myDisplayNone {
-	display: none
-}
-
 .modal {
 	display: flex;
 	align-items: center;
@@ -540,13 +537,13 @@ MODAL */
 	color: #D65353
 }
 
-.miniGallery {
+#contenerGallery {
 	padding: 0 96px;
 	display: flex;
 	flex-flow: row wrap
 }
 
-.miniGallery figure {
+#contenerGallery figure {
 	display: flex;
 	flex-flow: column;
 	align-items: flex-end
@@ -598,4 +595,8 @@ MODAL */
 
 .js-close-modal span {
 	display:none;
+}
+
+#myFormulaire, .js-return-modal {
+	display: none;
 }

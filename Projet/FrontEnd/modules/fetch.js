@@ -77,42 +77,22 @@ export async function fetchUser()
 
 export async function deleteWork(id)
 {
+
     console.log(id);
     console.log(sessionStorage.getItem('token'));
 
+    const url = "http://localhost:5678/api/works/";
     const myInit = {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json',
             "Accept": "application/json;charset=utf-8",
+            'Content-Type': 'application/json;charset=utf-8"',
             "Authorization": `Bearer ${sessionStorage.getItem('token')}`
         }
     };
 
     console.log(myInit);
-    
-    const response = await fetch("http://localhost:5678/api/works/" + id, myInit);
-    console.log(response);
-    // const workDel = response.json();
-    // console.log("RETURN", workDel.status);
 
-    // if (workDel.status === 204) {
-    //     return workDel;
-    // }
-// ELSE ERROR !!!
+    return await fetch(url + id, myInit);
 
-    // const response = await fetch("http://localhost:5678/api/works/" + id, {
-    //     method: 'DELETE',
-    //     headers: {
-    //         'Content-Type' : 'application/json',
-    //         'Authorization' : `Bearer ${sessionStorage.getItem('token')}`
-    //     },
-    // });
-
-    // const workDel = await response.json();
-    // console.log("RETURN", workDel.status);
-    // if (ret.status === 204) {
-                //     fetchAllWorks().then(works => gallery(works));
-                //     console.log("RETURN", ret);
-                // }
 }

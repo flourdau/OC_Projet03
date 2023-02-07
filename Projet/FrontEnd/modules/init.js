@@ -1,25 +1,24 @@
 import { fetchAllWorks, fetchAllCategories } from './fetch.js';
 import { createGalleries } from './gallery.js';
 import { createMenu } from './createFilters.js';
-import { createEvents } from './events.js';
+import { createEvents, createEventsModal } from './events.js';
 import { checkToken } from './storage.js';
 import { createBlocksModifier } from './modifier.js';
-import { initModal } from './modal.js';
 import { myLogout } from './login.js';
 
 export async function main() {
     try {
         let tabSet = await fetchAllWorks();
-        console.log(tabSet);
+        // console.log(tabSet);
         createGalleries(tabSet);
         let categories = await fetchAllCategories();
-        console.log(categories);
+        // console.log(categories);
         createMenu(categories);
 
         if (checkToken()) {
-            console.log(checkToken());
+            // console.log(checkToken());
             createBlocksModifier();
-            initModal(tabSet);
+            createEventsModal();
         }
         createEvents(tabSet);
         myLogout();

@@ -1,5 +1,4 @@
 import { gallery as varGallery, cleanGallery, createGallery, createCard } from './gallery.js';
-// import { openModal } from './modal.js';
 
 export function filterCategories(className, tabSet)
 {
