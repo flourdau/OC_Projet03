@@ -1,3 +1,48 @@
+export function formSend()
+{
+    console.log('testouillleeee');
+
+    const userId = sessionStorage.getItem('userId');
+    const title = document.querySelector('.titleForm').value;
+    const categoryId = document.querySelector('.categorieForm').value;
+    const imageUrl = document.querySelector('.dlImg').files;
+    console.log(userId, title, categoryId, imageUrl);
+
+// let form = new FormData();
+// form.append('userId', userId);
+// form.append('title', title);
+// form.append('categoryId', categoryId);
+// form.append('imageUrl', URL.createObjectURL(imageUrl[0]));
+
+
+    let json = {
+        "category": categoryId,
+        "title": title,
+        "image": URL.createObjectURL(imageUrl[0])
+        // "userId": userId
+    }
+
+    // console.log(form.get(title));
+
+    let myHeaders = new Headers({
+        Accept: 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        // 'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+    });
+
+    const url = "http://localhost:5678/api/works/";
+    const myInit = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(json)
+    };
+
+    let test = fetch(url, myInit);
+    console.log(test);
+}
+
 export async function fetchAllWorks()
 {
 
@@ -64,6 +109,7 @@ export async function fetchUser()
 
         if (myJson.token) {
             sessionStorage.setItem("token", myJson.token);
+            sessionStorage.setItem("userId", myJson.userId);
             document.location.href="./index.html";
         }
     }

@@ -1,3 +1,5 @@
+import { formSend } from './fetch.js';
+
 const portfolio = document.getElementById("portfolio");
 export let gallery = portfolio.querySelector(".gallery");
 const modal = document.querySelector(".modal-wrapper");
@@ -5,17 +7,26 @@ let miniGallery = document.querySelector("#miniGallery");
 let contenerGallery = document.querySelector("#contenerGallery");
 const contenerForm = document.querySelector("#myFormulaire");
 
-function createElemForm() {
-
+function createElemForm(categories) {
     // CREATION DU FORMULAIRE
     let form = document.createElement("form");
+    form.setAttribute("id", "myformAdd");
+    // form.setAttribute("method", "post")
+    // form.setAttribute("enctype", "application/x-www-form-urlencoded")
 
     // Création du container
     let myDlContener = document.createElement("div");
+    myDlContener.setAttribute("class", "myDlContener");
     let icoImg = document.createElement("i");
-    icoImg.setAttribute("class", "");
-    let dlImg = document.createElement("button");
-    dlImg.innerText = "+ Ajouter photo";
+    icoImg.setAttribute("class", "fa-regular fa-image");
+    let dlImg = document.createElement("input");
+    dlImg.setAttribute("required", "required");
+    dlImg.setAttribute("class", "dlImg");
+    dlImg.setAttribute("name", "imageUrl");
+    dlImg.setAttribute("type", "file");
+    dlImg.setAttribute("accept", "image/jpeg, image/jpg, image/png");
+    dlImg.setAttribute("value", "+ Ajouter photo");
+
     let p = document.createElement("p");
     p.innerText = "jpg, png : 4mo max";
     myDlContener.appendChild(icoImg);
@@ -24,21 +35,52 @@ function createElemForm() {
 
     // Création des input
     let myInputContener = document.createElement("div");
+    myInputContener.setAttribute("class", "myInputContener");
     let inputTitle = document.createElement("input");
-    let inputCategory = document.createElement("input");
+    inputTitle.setAttribute("type", "text");
+    inputTitle.setAttribute("name", "title");
+    inputTitle.setAttribute("class", "titleForm");
+    inputTitle.setAttribute("id", "title-select");
+    inputTitle.setAttribute("required", "required");
+    
+    let selectCategory = document.createElement("select");
+
+    selectCategory.setAttribute("required", "required");
+    selectCategory.setAttribute("id", "categories-select");
+    selectCategory.setAttribute("name", "categoryId");
+    selectCategory.setAttribute("class", "categorieForm");
+    let option = document.createElement("option");
+    option.innerText = "";
+    selectCategory.appendChild(option);
+    
+    categories.forEach(categorie => {
+        let option = document.createElement("option");
+        option.setAttribute("value", categorie.id);
+        option.setAttribute("name", 'categoryId');
+        option.innerText = categorie.name;
+        selectCategory.appendChild(option);
+    });
+    
     let labelTitle = document.createElement("label");
-    let labelCategory = document.createElement("label");
+    labelTitle.setAttribute("for", "title-select");
     labelTitle.innerText = "Titre";
+
+    let labelCategory = document.createElement("label");
+    labelCategory.setAttribute("for", "categories-select");
     labelCategory.innerText = "Catégorie";
+
     myInputContener.appendChild(labelTitle);
     myInputContener.appendChild(inputTitle);
     myInputContener.appendChild(labelCategory);
-    myInputContener.appendChild(inputCategory);
+    myInputContener.appendChild(selectCategory);
 
     // CRATION DU BOUTTON SUBMIT
     let bottomBar = document.createElement("div");
+    bottomBar.setAttribute("class", "bottomBar");
     let hrModal = document.createElement("hr");
     let submitForm = document.createElement("button");
+    submitForm.setAttribute("id", "submitFormAdd");
+    submitForm.setAttribute("type", "submit");
     submitForm.innerText = "Valider";
     bottomBar.appendChild(hrModal);
     bottomBar.appendChild(submitForm);
@@ -47,6 +89,11 @@ function createElemForm() {
     form.appendChild(myInputContener);
     form.appendChild(bottomBar);
     contenerForm.appendChild(form);
+
+    // form.addEventListener('submit', function (event) {
+    //     event.preventDefault();
+    //     let tmp = formSend(form);
+    // });
 
     return contenerForm;
 
@@ -96,8 +143,8 @@ export function createMiniGallery()
     bottomBar.appendChild(buttonAdd);
     bottomBar.appendChild(buttonDel);
 
-    contenerGallery.appendChild(myHr);
-    contenerGallery.appendChild(bottomBar);
+    miniGallery.appendChild(myHr);
+    miniGallery.appendChild(bottomBar);
 
     return miniGallery;
 
@@ -162,12 +209,11 @@ export function createMiniCard(card)
 
 }
 
-export function createGalleries(tabSet)
+export async function createGalleries(tabSet, categories)
 {
 
     for (let item of tabSet) {
         item.then(works => {
-            
             cleanGallery();
             createGallery();
             works.forEach(card => {
@@ -179,7 +225,7 @@ export function createGalleries(tabSet)
             miniGallery = createMiniGallery();
             modal.appendChild(miniGallery);
             if (sessionStorage.getItem('token')) {
-                modal.appendChild(createElemForm());
+                modal.appendChild(createElemForm(categories));
             }
             document.querySelector('#modal1').style.display = "none";
         })

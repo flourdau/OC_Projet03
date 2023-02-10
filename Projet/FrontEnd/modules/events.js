@@ -1,4 +1,4 @@
-import { fetchAllWorks, fetchAllCategories, deleteWork } from './fetch.js';
+import { fetchAllWorks, fetchAllCategories, deleteWork, formSend } from './fetch.js';
 import { filterCategories } from './category.js';
 import { createGalleries } from './gallery.js';
 import { openModal, closeModal } from './modal.js';
@@ -78,5 +78,52 @@ export function createEventsModal()
         event.preventDefault();
         modalFormAddOff();
     });
+
+
+
+    
+    // function deleteImage(index) {
+        //     // imagesArray.splice(index, 1);
+        //     displayImages();
+        // }
+        
+
+    function displayImages(files) {
+    
+        let previewImg = document.createElement('img')
+        previewImg.classList.add('previewImg');
+        previewImg.setAttribute("alt", "image");
+        previewImg.src = window.URL.createObjectURL(files[0])
+        document.querySelector(".myDlContener").appendChild(previewImg);
+        
+    }
+    
+    const myInput = document.querySelector(".dlImg");
+    myInput.addEventListener('change', function (event) {
+    
+        event.preventDefault();
+        console.log(myInput.files)
+        displayImages(myInput.files);
+
+    })
+
+    const form = document.querySelector("#myformAdd");
+
+    form.addEventListener('submit', {
+        handleEvent: function (event) {
+            event.preventDefault();
+            formSend();
+    }});
+
+    // const btnAddWork = document.querySelector("#submitFormAdd");
+    // btnAddWork.addEventListener('click', function (event) {
+    //         event.preventDefault();
+    //         formSend();
+
+    // })
+    // btnAddWork.addEventListener('click', (event) => {
+    //     // formValid();
+    //     // afficheData();
+    // })
 
 }

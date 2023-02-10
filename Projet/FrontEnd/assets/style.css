@@ -490,8 +490,8 @@ MODAL */
 #upBar {
 	width: 100%;
 	display: flex;
-	justify-content: flex-end;
-	padding: 0 15px 0 0
+	justify-content: space-between;
+	padding: 0 15px
 }
 
 #bottomBar {
@@ -535,6 +535,11 @@ MODAL */
 	line-height: 17px;
 	text-align: center;
 	color: #D65353
+}
+
+#miniGallery {
+	display: flex;
+	flex-flow: column
 }
 
 #contenerGallery {
@@ -593,10 +598,70 @@ MODAL */
 	text-align: left
 }
 
-.js-close-modal span {
-	display:none;
+/*	FORMULAIRE */
+.js-close-modal span,
+.js-return-modal span,
+#myFormulaire,
+.js-return-modal {
+	display: none;
 }
 
-#myFormulaire, .js-return-modal {
-	display: none;
+#myFormulaire,
+.myDlContener,
+.myInputContener
+{
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#myFormulaire {
+	/* background: PINK; */
+	width: 70%;
+	margin: 0 15%;
+}
+
+#myFormulaire>form,
+.myInputContener,
+.myInputContener input,
+.myInputContener label,
+.myInputContener select,
+.myInputContener option,
+.myDlContener
+{
+	width: 100%;
+}
+
+.myDlContener {
+	display: flex;
+	background: #E8F1F7;
+}
+
+.myInputContener {
+	display: flex;
+	align-items: flex-start;
+
+}
+
+.myInputContener input {
+	height: 51px;
+	background: #FFFFFF;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.bottomBar {
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.bottomBar button {
+	width: 150px;
+}
+
+.bottomBar hr {
+	width: 100%;
 }

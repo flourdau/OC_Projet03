@@ -8,10 +8,10 @@ import { myLogout } from './login.js';
 
 export async function main() {
     try {
-        let tabSet = await fetchAllWorks();
+        const tabSet = await fetchAllWorks();
         // console.log(tabSet);
-        createGalleries(tabSet);
-        let categories = await fetchAllCategories();
+        const categories = await fetchAllCategories();
+        await createGalleries(tabSet, categories);
         // console.log(categories);
         createMenu(categories);
 
