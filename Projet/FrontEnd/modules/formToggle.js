@@ -13,4 +13,3 @@ export function modalFormAddOff()
     document.getElementById("myFormulaire").style.display = "none";
     document.querySelector(".js-return-modal").style.display = "none";
 }
-

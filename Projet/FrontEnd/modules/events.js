@@ -1,14 +1,14 @@
+import { main } from './init.js';
 import { fetchAllWorks, fetchAllCategories, deleteWork, formSend } from './fetch.js';
 import { filterCategories } from './category.js';
-import { createGalleries } from './gallery.js';
+import { gallery, contenerGallery, createGalleries, createCard, createMiniCard } from './gallery.js';
 import { openModal, closeModal } from './modal.js';
-import { modalFormAddOn, modalFormAddOff } from './formAdd.js';
+import { modalFormAddOn, modalFormAddOff } from './formToggle.js';
 
 
 export function createEvents(tabSet)
 {
 
-    // const portfolio = document.getElementById("portfolio");
     const myBtns = document.querySelectorAll(".filter-btn");
     const myBtnTous = document.getElementsByClassName("filter-btn-tous");
 
@@ -27,9 +27,6 @@ export function createEvents(tabSet)
 
 export function createEventsModal()
 {
-    // buttonIcoLast.addEventListener('click', function (event) {
-    //     reOpenModal(event);
-    // });
 
     const btnDelWork = document.querySelectorAll(".btn-del-work");
     btnDelWork.forEach(button => 
@@ -80,7 +77,6 @@ export function createEventsModal()
     });
 
 
-
     
     // function deleteImage(index) {
         //     // imagesArray.splice(index, 1);
@@ -107,23 +103,57 @@ export function createEventsModal()
 
     })
 
+    // function addWork()
+    // {
+
+    //     const formDel = document.querySelector("#myformAdd");
+    //     formDel.removeEventListener('submit', ()=>{});
+    //     let myformAdd = document.querySelector('#myformAdd');
+    //     const myInput = document.querySelector(".dlImg");
+    //     myInput.removeEventListener('change', ()=>{});
+    //     myformAdd.remove();
+    //     document.getElementById("myFormulaire").style.display = "none";
+
+    // }
+
+    function createCards()
+    {
+        // card.id;
+        // card.imageUrl;
+        // card.title;
+
+        // createCard(card);
+        // createMiniCard(card);
+        const card = new Object;
+        const files = document.querySelector(".dlImg").files;
+        card.id = document.querySelector(".categorieForm").value;
+        card.title = document.querySelector(".titleForm").value;
+
+
+        card.imageUrl  = window.URL.createObjectURL(files[0])
+     
+        gallery.appendChild(createCard(card));
+        if (sessionStorage.getItem('token')) {
+            contenerGallery.appendChild(createMiniCard(card));
+        }
+        console.log('Diarra ❤', card);
+    }
+
     const form = document.querySelector("#myformAdd");
-
     form.addEventListener('submit', {
-        handleEvent: function (event) {
+
+        handleEvent: async function (event) {
+
             event.preventDefault();
-            formSend();
+            if (await formSend())
+            {
+                // verifInput();
+                createCards(event);
+                form.reset();
+                document.querySelector(".myDlContener img").remove();
+                closeModal(event);
+            }
+
     }});
-
-    // const btnAddWork = document.querySelector("#submitFormAdd");
-    // btnAddWork.addEventListener('click', function (event) {
-    //         event.preventDefault();
-    //         formSend();
-
-    // })
-    // btnAddWork.addEventListener('click', (event) => {
-    //     // formValid();
-    //     // afficheData();
-    // })
 
 }

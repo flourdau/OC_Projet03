@@ -6,8 +6,18 @@ export async function myLogin()
     const form = document.querySelector("#login");
 
     form.addEventListener('submit', async function(event) {
+
         event.preventDefault();
-        await fetchUser()
+        const myJson = await fetchUser();
+
+        if (myJson.token) {
+
+            sessionStorage.setItem("token", myJson.token);
+            sessionStorage.setItem("userId", myJson.userId);
+            document.location.href="./index.html";
+
+        }
+
     })
 
 }

@@ -296,9 +296,10 @@ FLOURDAU ADD */
 	box-sizing: border-box
 }
 
-
+/*
 NAV */
-nav a {
+nav a,
+.js-modal {
 	color: #000000;
 	text-decoration-line: none
 }
@@ -336,62 +337,9 @@ FILTERS */
 	background: #1D6154
 }
 
-/*
-LOGIN */
-#login {
-	margin: 182px auto 305px auto;
-	display: flex;
-	flex-flow: column;
-	max-width: 338px
-}
 
-#login input[type=email],
-#login input[type=password] {
-	background: #FFFFFF;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	width: 379px;
-	height: 51px;
-	border: none
-}
-
-#login input[type=email] {
-	margin: 0 0 30px 0
-}
-
-#login input[type=submit] {
-	padding: 10px 0;
-	border: none
-}
-
-#login label {
-	margin: 0 0 7px 0;
-	color: #3D3D3D;
-	font-family: 'Work Sans';
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 16px
-}
-
-#login h2,
-#login a {
-	margin: auto
-}
-
-#login h2 {
-	margin-bottom: 37px
-}
-
-#login>a {
-	font-family: 'Work Sans';
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 16px;
-	text-decoration-line: underline;
-	color: #3D3D3D
-}
-
+/* 
+Boutons Edition */
 .edition {
 	height: 59px;
 	color: #FFFFFF;
@@ -598,6 +546,15 @@ MODAL */
 	text-align: left
 }
 
+/*
+MODAL 2 */
+.myDlContener i {
+	font-size: 4em;
+	color: rgba(0, 0, 0, 0.3);
+	margin: 23px 0 15px 0
+}
+
+
 /*	FORMULAIRE */
 .js-close-modal span,
 .js-return-modal span,
@@ -608,15 +565,13 @@ MODAL */
 
 #myFormulaire,
 .myDlContener,
-.myInputContener
-{
+.myInputContener {
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
 }
 
 #myFormulaire {
-	/* background: PINK; */
 	width: 70%;
 	margin: 0 15%;
 }
@@ -627,8 +582,7 @@ MODAL */
 .myInputContener label,
 .myInputContener select,
 .myInputContener option,
-.myDlContener
-{
+.myDlContener {
 	width: 100%;
 }
 
@@ -637,13 +591,31 @@ MODAL */
 	background: #E8F1F7;
 }
 
+.myDlContener input[type="file"] {
+	display: none;
+}
+
+.labelImg {
+	border: 1px solid;
+	display: inline-block;
+	width: 173px;
+	height: 36px;
+	background: #CBD6DC;
+	border-radius: 50px;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align: center;
+	padding: 2% 0;
+}
+
 .myInputContener {
 	display: flex;
 	align-items: flex-start;
 
 }
 
-.myInputContener input {
+.myInputContener input,
+.myInputContener select {
 	height: 51px;
 	background: #FFFFFF;
 	border: none;
@@ -665,3 +637,70 @@ MODAL */
 .bottomBar hr {
 	width: 100%;
 }
+
+.previewImg {
+	width: 129px;
+	height: 193px;
+}
+
+
+/*
+LOGIN */
+#login {
+	margin: 182px auto 305px auto;
+	display: flex;
+	flex-flow: column;
+	max-width: 338px
+}
+
+#login input[type=email],
+#login input[type=password] {
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	width: 379px;
+	height: 51px;
+	border: none
+}
+
+#login input[type=email] {
+	margin: 0 0 30px 0
+}
+
+#login input[type=submit] {
+	padding: 10px 0;
+	border: none
+}
+
+#login label {
+	margin: 0 0 7px 0;
+	color: #3D3D3D;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px
+}
+
+#login h2,
+#login a {
+	margin: auto
+}
+
+#login h2 {
+	margin-bottom: 37px
+}
+
+#login>a {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	text-decoration-line: underline;
+	color: #3D3D3D
+}
+
+#message {
+	color: red
+}
+

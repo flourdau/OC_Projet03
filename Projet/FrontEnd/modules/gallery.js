@@ -1,36 +1,40 @@
-import { formSend } from './fetch.js';
+// import { eventForm } from './events.js';
 
 const portfolio = document.getElementById("portfolio");
 export let gallery = portfolio.querySelector(".gallery");
 const modal = document.querySelector(".modal-wrapper");
 let miniGallery = document.querySelector("#miniGallery");
-let contenerGallery = document.querySelector("#contenerGallery");
+export let contenerGallery = document.querySelector("#contenerGallery");
 const contenerForm = document.querySelector("#myFormulaire");
 
 function createElemForm(categories) {
+
     // CREATION DU FORMULAIRE
     let form = document.createElement("form");
     form.setAttribute("id", "myformAdd");
-    // form.setAttribute("method", "post")
-    // form.setAttribute("enctype", "application/x-www-form-urlencoded")
 
     // Création du container
     let myDlContener = document.createElement("div");
     myDlContener.setAttribute("class", "myDlContener");
     let icoImg = document.createElement("i");
     icoImg.setAttribute("class", "fa-regular fa-image");
+
+    let lableImg = document.createElement("label");
+    lableImg.setAttribute("class", "labelImg");
+    lableImg.innerText = '+ Ajouter photo';
+
     let dlImg = document.createElement("input");
     dlImg.setAttribute("required", "required");
     dlImg.setAttribute("class", "dlImg");
     dlImg.setAttribute("name", "imageUrl");
     dlImg.setAttribute("type", "file");
     dlImg.setAttribute("accept", "image/jpeg, image/jpg, image/png");
-    dlImg.setAttribute("value", "+ Ajouter photo");
+    lableImg.appendChild(dlImg);
 
     let p = document.createElement("p");
     p.innerText = "jpg, png : 4mo max";
     myDlContener.appendChild(icoImg);
-    myDlContener.appendChild(dlImg);
+    myDlContener.appendChild(lableImg);
     myDlContener.appendChild(p);
 
     // Création des input
@@ -90,11 +94,6 @@ function createElemForm(categories) {
     form.appendChild(bottomBar);
     contenerForm.appendChild(form);
 
-    // form.addEventListener('submit', function (event) {
-    //     event.preventDefault();
-    //     let tmp = formSend(form);
-    // });
-
     return contenerForm;
 
 }
@@ -105,28 +104,21 @@ export function cleanGallery()
     gallery.remove();
     miniGallery.remove();
 
-    gallery = document.createElement("div");
-    gallery.setAttribute('class', 'gallery');
+}
+
+export function createMiniGallery()
+{
+
     miniGallery = document.createElement("div");
     miniGallery.setAttribute('id', 'miniGallery');
     contenerGallery = document.createElement("div");
     contenerGallery.setAttribute('id', 'contenerGallery');
+
     let h2 = document.createElement("h2");
     h2.innerHTML = "Galerie photo";
 
     miniGallery.appendChild(h2);
     miniGallery.appendChild(contenerGallery);
-}
-
-export function createGallery()
-{
-
-    portfolio.appendChild(gallery);
-
-}
-
-export function createMiniGallery()
-{
 
     let bottomBar = document.createElement("div");
     let buttonAdd = document.createElement("button");
@@ -145,8 +137,6 @@ export function createMiniGallery()
 
     miniGallery.appendChild(myHr);
     miniGallery.appendChild(bottomBar);
-
-    return miniGallery;
 
 }
 
@@ -209,25 +199,45 @@ export function createMiniCard(card)
 
 }
 
-export async function createGalleries(tabSet, categories)
+export function createGallery()
+{
+
+    gallery = document.createElement("div");
+    gallery.setAttribute('class', 'gallery');
+    portfolio.appendChild(gallery);
+
+}
+
+// function sleep (time) {
+//     return new Promise((resolve) => setTimeout(resolve, time));
+// }
+
+export function createGalleries(tabSet, categories)
 {
 
     for (let item of tabSet) {
-        item.then(works => {
+
+        item.then(works =>
+        {
+            document.querySelector('#modal1').style.display = "none";
             cleanGallery();
             createGallery();
+            createMiniGallery();
+            // sleep(500).then(() => {});
             works.forEach(card => {
+    
                 gallery.appendChild(createCard(card));
-                if (sessionStorage.getItem('token')) {
-                    contenerGallery.appendChild(createMiniCard(card));
-                }
+                if (sessionStorage.getItem('token')) {contenerGallery.appendChild(createMiniCard(card));}
+
             });
-            miniGallery = createMiniGallery();
-            modal.appendChild(miniGallery);
             if (sessionStorage.getItem('token')) {
+                modal.appendChild(miniGallery);
                 modal.appendChild(createElemForm(categories));
+                // eventForm();
             }
-            document.querySelector('#modal1').style.display = "none";
+
+
+
         })
     }
 
