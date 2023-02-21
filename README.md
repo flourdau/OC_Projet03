@@ -3,7 +3,7 @@
 
 ##### *Aidez votre équipe à finaliser le nouveau site internet d’une architecte grâce à la création d’un site dynamique avec JavaScript, communiquant avec une API.*
 
-### ABORESCENCE:
+### ARBORESCENCE:
 Pages:
 - index.html => *(Page principale)* 
 - login.html => *(Page de connection des utilisateurs)*
