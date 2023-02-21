@@ -210,6 +210,10 @@ export function createEventsModal()
                     createCards(event);
                     form.reset();
                     document.querySelector(".myDlContener img").remove();
+                    document.querySelector(".labelImg").style.display = 'block';
+                    document.querySelector(".myDlContener i").style.display = 'inline';
+                    document.querySelector(".myDlContener p").style.display = 'inline';
+                    // document.querySelector(".myDlContener").remove();
                     closeModal(event);
                 }
             }
