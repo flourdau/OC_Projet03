@@ -45,6 +45,6 @@ Page de login:
 - Test Login-Logout  
 
 
-### RESSOUCES:
-- [Blog](https://blog.positive-link.net/oc_projet03)
+### RESSOURCES:
+- [My Blog post](https://blog.positive-link.net/oc_projet03)
 
