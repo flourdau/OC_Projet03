@@ -1,4 +1,6 @@
-// import { createGalleries } from './gallery.js';
+/*
+*   Modul rassemblant les appel API avec la fonction fetch
+*/
 
 export async function formSend()
 {

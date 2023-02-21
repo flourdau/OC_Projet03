@@ -1,3 +1,7 @@
+/*
+*   Module principal d'initiation
+*/
+
 import { fetchAllWorks, fetchAllCategories } from './fetch.js';
 import { createGalleries } from './gallery.js';
 import { createMenu } from './createFilters.js';
@@ -23,13 +27,17 @@ export async function main()
         //  Affichage du menu de catégories
         createMenu(categories);
 
+        //  Si Log
         if (checkToken()) {
+            // on crée le block Modal
             createBlocksModifier();
+            // Le bouton Logout
             myLogout();
+            // Ainsi que les events de la modal
             createEventsModal();
         }
 
-        //  Création des events
+        //  Création des events restants
         createEvents(tabSet);
 
     }

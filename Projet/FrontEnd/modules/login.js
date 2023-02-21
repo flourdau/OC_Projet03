@@ -1,3 +1,7 @@
+/*
+*   Moddule de gestion du login
+*/
+
 import { fetchUser } from './fetch.js';
 
 export async function myLogin()

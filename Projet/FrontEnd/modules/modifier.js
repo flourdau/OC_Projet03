@@ -1,3 +1,7 @@
+/*
+*   Module de création des boutons modifier pour l'interface utilisateurs
+*/
+
 export function createBlocksModifier() 
 {
     if (!sessionStorage.getItem("flagModif"))

@@ -1,3 +1,7 @@
+/*
+*	Module de gestion du stockage en session
+*/
+
 export function checkToken(){return sessionStorage.getItem('token');}
 
 export function checkTokenLogin()
