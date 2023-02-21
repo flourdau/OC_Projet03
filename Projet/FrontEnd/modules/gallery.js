@@ -18,6 +18,7 @@ export function cleanGallery()
 
 }
 
+
 export function createMiniGallery()
 {
 
@@ -52,6 +53,7 @@ export function createMiniGallery()
 
 }
 
+
 export function createCard(card)
 {
 
@@ -70,6 +72,7 @@ export function createCard(card)
     return figure;
 
 }
+
 
 export function createMiniCard(card)
 {
@@ -111,6 +114,7 @@ export function createMiniCard(card)
 
 }
 
+
 export function createGallery()
 {
 
@@ -120,6 +124,7 @@ export function createGallery()
 
 }
 
+
 export function createGalleries(tabSet, categories)
 {
 
@@ -127,6 +132,7 @@ export function createGalleries(tabSet, categories)
 
         item.then(works =>
         {
+
             document.querySelector('#modal1').style.display = "none";
             cleanGallery();
             createGallery();
@@ -134,12 +140,19 @@ export function createGalleries(tabSet, categories)
             works.forEach(card => {
     
                 gallery.appendChild(createCard(card));
-                if (sessionStorage.getItem('token')) {contenerGallery.appendChild(createMiniCard(card));}
+                if (sessionStorage.getItem('token')) {
+
+                    contenerGallery.appendChild(createMiniCard(card));
+
+                }
 
             });
-            if (sessionStorage.getItem('token')) {
+            if (sessionStorage.getItem('token'))
+            {
+
                 modal.appendChild(miniGallery);
                 modal.appendChild(createElemForm(categories));
+
             }
 
         })

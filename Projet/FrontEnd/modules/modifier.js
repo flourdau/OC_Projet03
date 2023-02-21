@@ -4,8 +4,10 @@
 
 export function createBlocksModifier() 
 {
+
     if (!sessionStorage.getItem("flagModif"))
     {
+
         const body = document.querySelector("body");
         const intro = document.querySelector("#introduction>article");
         const projet = document.querySelector("#portfolio>h2");
@@ -76,5 +78,6 @@ export function createBlocksModifier()
         picture.style.margin = "auto auto auto 0";
 
         sessionStorage.setItem("flagModif", true);
+
     }
 }

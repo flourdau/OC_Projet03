@@ -11,16 +11,23 @@ export function filterCategories(className, tabSet)
     createGallery();
     for (let item of tabSet)
     {
+
         item.then(works =>
         {
+
             works.forEach(work => 
             {
+
                 if (parseInt(className) === work.categoryId)
                 {
+
                     const card = createCard(work);
                     varGallery.appendChild(card);
+
                 }
+
             }
+
         )})
     }
 

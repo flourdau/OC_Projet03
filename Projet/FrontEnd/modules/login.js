@@ -26,16 +26,21 @@ export async function myLogin()
 
 }
 
+
 export function myLogout()
 {
 
     const myLogoutBtn = document.querySelector("#myLogout");
     
-    myLogoutBtn.addEventListener('click', (event) => {
+    myLogoutBtn.addEventListener('click', (event) => 
+    {
         event.preventDefault();
-        if (sessionStorage.getItem('token')) {
+        if (sessionStorage.getItem('token'))
+        {
+
             sessionStorage.clear();
             document.location.href="./login.html";
+
     }})
 
 }

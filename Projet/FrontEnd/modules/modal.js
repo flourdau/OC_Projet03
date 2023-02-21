@@ -8,9 +8,13 @@ const stopPropagation = function(e) {e.stopPropagation();}
 export const closeModal = function(event)
 {
 
-    if (modal === null) {
+    if (modal === null)
+    {
+
         return
+
     }
+
     event.preventDefault();
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', true);
@@ -28,8 +32,6 @@ export const openModal= function(event)
     event.preventDefault();
     modal = document.querySelector("#modal1");
     modal.style.display = 'flex';
-    // focusables = Array.from(modal.querySelectorAll(focusableSelector));
-    // focusables[0].focus();
     modal.setAttribute('class', 'modal');
     modal.removeAttribute('aria-hidden');
     modal.setAttribute('aria-modal', 'true');

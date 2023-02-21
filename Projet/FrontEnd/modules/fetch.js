@@ -24,13 +24,17 @@ export async function formSend()
 
     let myResponse = await fetch(url, myInit);
 
-    if (myResponse.ok === true) {
+    if (myResponse.ok === true)
+    {
+
         return myResponse.ok;
+
     }
     
     throw new Error('Impossible de contacter le serveur...');
 
 }
+
 
 export async function fetchAllWorks()
 {
@@ -56,9 +60,11 @@ export async function fetchAllWorks()
         return tabSet;
 
     }
+
     throw new Error('Impossible de contacter le serveur...');
 
 }
+
 
 export async function fetchAllCategories()
 {
@@ -73,12 +79,17 @@ export async function fetchAllCategories()
     };
 
     const myResponse = await fetch(url, myInit)
-    if (myResponse.ok === true) {
+    if (myResponse.ok === true)
+    {
+
         return myResponse.json();
+
     }
+
     throw new Error('Impossible de contacter le serveur...');
 
 }
+
 
 export async function fetchUser()
 {
@@ -101,7 +112,11 @@ export async function fetchUser()
         body: JSON.stringify(user)
     });
 
-    if (myResponse.ok) {return await myResponse.json();}
+    if (myResponse.ok) {
+
+        return await myResponse.json();
+
+    }
     else {
 
         let message = document.querySelector("#message");
@@ -112,6 +127,7 @@ export async function fetchUser()
     }
 
 }
+
 
 export async function deleteWork(id)
 {
