@@ -615,6 +615,11 @@ MODAL 2 */
 	color: #306685;
 }
 
+.labelImg:hover {
+	background: #306685;
+	color: #CBD6DC;
+}
+
 .myInputContener {
 	display: flex;
 	align-items: flex-start;
