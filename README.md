@@ -40,6 +40,7 @@ Modal:
     - return  
     - close  
     - delete image  
+    - message d'erreur
 
 Page de login:  
 - Message d'erreur de login  
