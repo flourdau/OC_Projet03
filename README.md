@@ -34,10 +34,9 @@ Page principale:
 - Menu Filter  
 
 Modal:  
+- Hide menuFilter lorsque log  
 
-Hide menuFilter lorsque log  
-
-Test bouton modal  
+- Test bouton modal  
     - return  
     - close  
     - delete image  
