@@ -23,18 +23,20 @@ Modules JavaScript:
 - /modules/storage.js => *Gestion du stockage en session*
 
 Asset:
-- /assets/style.css
+- /assets/style.css => (CSS)
 - /assets/icons/
 - /assets/images/
 
-### TEST FONCTIONNELS: 
-Page principale:
+
+### TEST FONCTIONNELS:  
+Page principale:  
 - Réccupération et affichage de tous les works  
 - Menu Filter  
 
-Modal: 
+Modal:  
 
-Hide lorsue log  
+Hide menuFilter lorsque log  
+
 Test bouton modal  
     - return  
     - close  
@@ -45,6 +47,11 @@ Page de login:
 - Test Login-Logout  
 
 
+### BONUS:
+- Redirrection si déjà log  
+- Protection menu Filter  
+- Verif des input du formulaire  
+
+
 ### RESSOURCES:
 - [My Blog post](https://blog.positive-link.net/oc_projet03)
-
