@@ -1,5 +1,5 @@
 /*
-*   Modul de création du menu de filtres + ses boutons
+*   Module de création du menu de filtres + ses boutons
 */
 
 function createBtn(categorie)

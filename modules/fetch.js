@@ -1,5 +1,5 @@
 /*
-*   Modul rassemblant les appel API avec la fonction fetch
+*   Module rassemblant les appel API avec la fonction fetch
 */
 
 export async function formSend()
