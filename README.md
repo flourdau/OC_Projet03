@@ -3,6 +3,8 @@
 
 ##### *Aidez votre équipe à finaliser le nouveau site internet d’une architecte grâce à la création d’un site dynamique avec JavaScript, communiquant avec une API.*
 
+⚠ Attention de ne pas inclure le dossier Backend si vous utilsé Live Server avec VS Code sinon il y aura des rechargements automatique de la page apres un add/delete de works...
+
 ### ARBORESCENCE:
 Pages:
 - index.html => *(Page principale)* 
